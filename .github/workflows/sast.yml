@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '55/5 * * * *'   # keep your schedule
+    - cron: '38 9 * * 0'
 
 jobs:
   analyze:
@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript' ]
+        language: [ 'javascript-typescript' ]
 
     steps:
       - name: Checkout repository
@@ -30,9 +30,7 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+          build-mode: none        # <-- this is the key fix
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
