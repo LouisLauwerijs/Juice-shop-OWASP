@@ -30,7 +30,7 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
-          build-mode: none        # <-- this is the key fix
+          build-mode: none        
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
