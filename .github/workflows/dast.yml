@@ -38,3 +38,4 @@ jobs:
           target: 'http://${{ env.HOST_IP }}:3000'
           fail_action: false          # Juice Shop is intentionally vulnerable — don't fail on findings
           artifact_name: 'zap-scan-results'
+          create_issue: false
